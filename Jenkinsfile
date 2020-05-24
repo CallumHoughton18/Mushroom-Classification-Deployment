@@ -1,8 +1,11 @@
 pipeline {
     agent any
-    steps {
-        step('Deploy via Docker-Compose') {
-            sh 'docker-compose --version'
+
+    stages {
+        stage('Deploy via Docker-Compose') {
+            steps {
+                sh 'docker-compose --version'
+            }
         }
     }
 }
