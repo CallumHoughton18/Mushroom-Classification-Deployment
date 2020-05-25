@@ -7,8 +7,8 @@ pipeline {
     stages {
         stage('Copy files') {
             steps {
-                withCredentials([file(credentialsId: 'docker.env-file', variable: 'DOCKER_ENV'),
-                file(credentialsId: 'nginx.conf-file', variable: 'NGINX_CONF')]) {
+                withCredentials([file(credentialsId: 'mushroom_apidocker.env', variable: 'DOCKER_ENV'),
+                file(credentialsId: 'mushroomapi_nginx.conf', variable: 'NGINX_CONF')]) {
                     sh "cp \$DOCKER_ENV ./.docker.env"
                     sh "cp \$NGINX_CONF ./nginx/nginx.conf"
                 }
