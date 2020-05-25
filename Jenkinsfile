@@ -2,8 +2,10 @@ pipeline {
     agent any
     options {
         buildDiscarder(logRotator(numToKeepStr: '5', artifactNumToKeepStr: '5'))
-        pipelineTriggers([[$class: 'DockerHubTrigger', options: [[$class: 'TriggerOnSpecifiedImageNames', repoNames: ["callumhoughton22/mushroom-api"].toSet()]]]])
-
+    }
+    
+    triggers {
+        [$class: 'DockerHubTrigger', options: [[$class: 'TriggerOnSpecifiedImageNames', repoNames: ["callumhoughton22/mushroom-api"].toSet()]]]
     }
 
     stages {
