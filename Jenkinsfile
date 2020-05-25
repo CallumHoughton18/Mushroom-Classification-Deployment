@@ -3,17 +3,6 @@ pipeline {
     options {
         buildDiscarder(logRotator(numToKeepStr: '5', artifactNumToKeepStr: '5'))
     }
-    
-    triggers {
-        dockerHubTrigger(
-            options {
-                triggerForAllUsedInJob()
-                triggerOnSpecifiedImageNames {
-                    repoNames(['callumhoughton/mushroom-api'] as Set)
-                }
-            }
-        )
-    }
 
     stages {
         stage('Copy files') {
