@@ -5,7 +5,14 @@ pipeline {
     }
     
     triggers {
-        [$class: 'DockerHubTrigger', options: [[$class: 'TriggerOnSpecifiedImageNames', repoNames: ["callumhoughton22/mushroom-api"].toSet()]]]
+        dockerHubTrigger {
+            options {
+                triggerForAllUsedInJob()
+                triggerOnSpecifiedImageNames {
+                    repoNames(['callumhoughton/mushroom-api'] as Set)
+                }
+            }
+        }
     }
 
     stages {
