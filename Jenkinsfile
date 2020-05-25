@@ -6,10 +6,12 @@ pipeline {
 
     stages {
         stage('Copy files') {
-            withCredentials([file(credentialsId: 'docker.env-file', variable: 'DOCKER-ENV'),
-            file(credentialsId: 'nginx.conf-file', variable: 'NGINX-CONF')]) {
-                sh "cp \$DOCKER-ENV ./.docker.env"
-                sh "cp \$NGINX-CONF ./nginx/nginx.conf"
+            steps {
+                withCredentials([file(credentialsId: 'docker.env-file', variable: 'DOCKER-ENV'),
+                file(credentialsId: 'nginx.conf-file', variable: 'NGINX-CONF')]) {
+                    sh "cp \$DOCKER-ENV ./.docker.env"
+                    sh "cp \$NGINX-CONF ./nginx/nginx.conf"
+                }
             }
         }
         stage('Deploy via Docker-Compose') {
