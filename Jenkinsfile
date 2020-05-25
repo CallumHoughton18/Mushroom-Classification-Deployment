@@ -9,8 +9,8 @@ pipeline {
             steps {
                 withCredentials([file(credentialsId: 'mushroomapi_docker.env', variable: 'DOCKER_ENV'),
                 file(credentialsId: 'mushroomapi_nginx.conf', variable: 'NGINX_CONF')]) {
-                    sh "cp -- \$DOCKER_ENV ./"
-                    sh "cp -- \$NGINX_CONF ./"
+                    sh "cp '\$DOCKER_ENV' ./"
+                    sh "cp '\$NGINX_CONF' ./"
                 }
             }
         }
