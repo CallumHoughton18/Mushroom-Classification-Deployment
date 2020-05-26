@@ -9,8 +9,8 @@ pipeline {
             steps {
                 withCredentials([file(credentialsId: 'docker.env_file', variable: 'DOCKER_ENV'),
                 file(credentialsId: 'nginx.conf_file', variable: 'NGINX_CONF')]) {
-                    sh "cp '${$DOCKER_ENV}' ./.docker.env"
-                    sh "cp '${$NGINX_CONF}' ./nginx.conf"
+                    sh "cp \'\$DOCKER_ENV\' ./.docker.env"
+                    sh "cp \'\$NGINX_CONF\' ./nginx.conf"
                 }
             }
         }
