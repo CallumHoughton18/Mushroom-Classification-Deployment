@@ -23,6 +23,15 @@ pipeline {
     }
     
     post {
+        always {
+            withCredentials([string(credentialsId: 'sendto-email', variable: 'EMAIL')]) {
+                emailext( to: "${EMAIL}", 
+                    body: "${env.BUILD_URL}", 
+                    subject: "[${currentBuild.currentResult}] ${env.JOB_NAME} - Build # ${env.BUILD_NUMBER}",
+                    attachLog: true)
+            }
+            deleteDir()      
+        }
         cleanup {
             deleteDir()
         }
