@@ -17,6 +17,7 @@ pipeline {
         stage('Deploy via Docker-Compose') {
             steps {
                 sh 'docker-compose -f docker-compose.prod.yml up -d --build'
+                sh 'docker system prune -a -f'
             }
         }
     }
