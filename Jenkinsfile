@@ -16,7 +16,6 @@ pipeline {
         }
         stage('Deploy via Docker-Compose') {
             steps {
-                sh 'docker-compose down --remove-orphans'
                 sh 'docker-compose -f docker-compose.prod.yml up -d --build'
             }
         }
