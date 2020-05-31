@@ -20,7 +20,7 @@ FLASK_APP=./api/__init__.py
 DATASET_DIR=./files
 CURRENT_MODEL_DIR=./current_model
 TRAINED_MODELS_DIR=./trained_models
-FEATURE_DEFINITION_PATH=./api/features-definition.json
+FEATURE_DEFINITION_PATH=./files/features-definition.json
 LOGS_DIRECTORY=./api_logs`
 
 For the production docker-compose file an `nginx.conf` file needs to be present in the `nginx` directory. For instructions on how to setup this file read the [nginx documentation](https://www.linode.com/docs/web-servers/nginx/nginx-installation-and-basic-setup/). Or, contact the repository owner for an example.
