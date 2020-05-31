@@ -45,4 +45,5 @@ types {
   video/x-msvideo                       avi;
   video/x-ms-wmv                        wmv;
   video/x-ms-asf                        asx asf;
-  vide
+  video/x-mng                           mng;
+}
