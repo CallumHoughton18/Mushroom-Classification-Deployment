@@ -6,7 +6,7 @@ services:
     command: gunicorn --bind 0.0.0.0:5000 manage:APP
     restart: unless-stopped
     volumes:
-      - static_volume:/home/app/files
+      - static_volume:/app/files
     expose:
       - 5000
     env_file:
