@@ -10,3 +10,8 @@ services:
       - ./.docker.env
     environment:
       - FLASK_ENV=development
+
+  front-end:
+    build: ./frontend
+    ports:
+      - 8000:5000
