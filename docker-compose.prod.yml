@@ -16,7 +16,6 @@ services:
 
   front_end:
     image: callumhoughton22/mushroom-classification-front-end:latest
-    restart: unless-stopped
     volumes: 
       - ./frontend:/app/build
     ports:
