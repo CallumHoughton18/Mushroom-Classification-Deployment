@@ -17,7 +17,7 @@ services:
   front_end:
     image: callumhoughton22/mushroom-classification-front-end:latest
     volumes: 
-      - ./frontend:/app/build
+      - front_end_vol:/app/build
     ports:
       - 8000:5000
 
@@ -34,7 +34,7 @@ services:
     restart: unless-stopped
     volumes:
       - static_volume:/app/files
-      - ./frontend:/var/www/mushroomUI
+      - front_end_vol:/var/www/mushroomUI
       - ./data/certbot/www:/var/www/certbot
       - /etc/letsencrypt/:/etc/letsencrypt
     ports:
@@ -48,3 +48,4 @@ services:
 
 volumes:
   static_volume:
+  front_end_vol:
