@@ -35,7 +35,7 @@ services:
     restart: unless-stopped
     volumes:
       - static_volume:/app/files
-      - /var/www/mushroomUI:./frontend
+      - ./frontend:/var/www/mushroomUI
       - ./data/certbot/www:/var/www/certbot
       - /etc/letsencrypt/:/etc/letsencrypt
     ports:
