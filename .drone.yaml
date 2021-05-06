@@ -16,7 +16,12 @@ steps:
   commands:
     - echo "$APIDOCKERENV" > ./.docker.env
     - echo "$FRONTENDDOCKERENV" > ./.react.docker.env
-    - docker-compose -f docker-compose.prod.yml up -d --build
+    - docker-compose -f docker-compose-light.prod.yml up -d --build
   when:
     branch:
     - master
+
+volumes:
+    - name: dockersocket
+      host:
+        path: /var/run/docker.sock
