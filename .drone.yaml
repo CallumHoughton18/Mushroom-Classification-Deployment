@@ -4,7 +4,7 @@ name: mushroom-classification-application-deployment pipeline
 
 steps: 
 - name: launch-app-and-api
-  image: docker/compose:1.29.0
+  image: docker/compose
   volumes:
     - name: dockersock
       path: /var/run/docker.sock
@@ -16,7 +16,8 @@ steps:
   commands:
     - echo "$APIDOCKERENV" > ./.docker.env
     - echo "$FRONTENDDOCKERENV" > ./.react.docker.env
-    - docker-compose -f ./docker-compose-light.prod.yml up -d --build
+    - ls -a
+    - docker-compose -f docker-compose-light.prod.yml up -d --build
   when:
     branch:
     - master
