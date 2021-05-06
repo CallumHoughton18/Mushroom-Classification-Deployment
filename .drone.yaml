@@ -6,7 +6,7 @@ steps:
 - name: launch-app-and-api
   image: docker/compose
   volumes:
-    - name: dockersock
+    - name: dockersocket
       path: /var/run/docker.sock
   environment:
     APIDOCKERENV:
