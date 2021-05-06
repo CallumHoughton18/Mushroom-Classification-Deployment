@@ -1,2 +1,3 @@
 *.conf
 .docker.env
+*.env
