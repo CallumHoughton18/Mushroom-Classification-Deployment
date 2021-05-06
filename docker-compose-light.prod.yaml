@@ -1,0 +1,28 @@
+version: '3'
+
+volumes:
+  mushroom-backend:
+  
+networks:
+  nginx-front-facing-proxy-network:
+    external: true
+
+services:
+  mushroom-api:
+    image: callumhoughton22/mushroom-api:latest
+    command: gunicorn --bind 0.0.0.0:5000 manage:APP    
+    volumes:
+      - mushroom-backend:/app/files
+    env_file:
+      - ./.docker.env
+    environment:
+      - FLASK_ENV=production
+    networks:
+      - nginx-front-facing-proxy-network
+
+  mushroom-front-end:
+    build: ./frontend
+    env_file: 
+      - ./.react.docker.env
+    networks:
+      - nginx-front-facing-proxy-network

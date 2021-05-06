@@ -1,0 +1,22 @@
+kind: pipeline
+type: docker
+name: mushroom-classification-application-deployment pipeline
+
+steps: 
+- name: launch-app-and-api
+  image: docker/compose:1.29.0-rc2-alpine
+  volumes:
+    - name: dockersock
+      path: /var/run/docker.sock
+  environment:
+    APIDOCKERENV:
+      from_secret: APIDOCKERENV
+    FRONTENDDOCKERENV:
+      from_secret: FRONTENDDOCKERENV
+  commands:
+    - echo "$APIDOCKERENV" > ./.docker.env
+    - echo "$FRONTENDDOCKERENV" > ./.react.docker.env
+    - docker-compose -f docker-compose.prod.yml up -d --build
+  when:
+    branch:
+    - master
