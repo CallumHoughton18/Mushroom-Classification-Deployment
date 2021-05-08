@@ -15,9 +15,9 @@ services:
       - FLASK_ENV=production
 
   front_end:
-    image: callumhoughton22/mushroom-classification-front-end:latest
-    volumes: 
-      - front_end_vol:/app/build
+    build: ./frontend
+    env_file: 
+      - ./.react.docker.env
     ports:
       - 8000:5000
 
