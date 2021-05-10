@@ -17,6 +17,7 @@ steps:
     - echo "$APIDOCKERENV" > ./.docker.env
     - echo "API_BASE_URL=https://mushroomlapi.callums-stuff.net/api" > ./.react.docker.env
     - ls -a
+    - docker-compose -f docker-compose-light.prod.yml down 
     - docker-compose -f docker-compose-light.prod.yml up -d --build
   when:
     branch:
